@@ -123,7 +123,7 @@ export default async function AccueilPage() {
         <div className="card overflow-hidden">
           <iframe
             title="Localisation de la Chapelle Sainte Jeanne d'Arc"
-            src="https://www.google.com/maps?q=5.478547,-3.949795&z=16&output=embed"
+            src="https://www.google.com/maps?q=5.4601241,-3.9732605&z=16&output=embed"
             className="h-[340px] w-full border-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
