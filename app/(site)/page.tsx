@@ -19,8 +19,12 @@ export default async function AccueilPage() {
     <>
       {/* HERO */}
       <section className="relative">
-        <Placeholder label="Photo · façade de la chapelle" rounded="rounded-none" className="h-[460px] w-full md:h-[560px]" />
-        <div className="absolute inset-0 bg-creme/55" />
+        <img
+          src="/hero-chapelle.jpeg"
+          alt="Intérieur de la Chapelle Sainte Jeanne d'Arc"
+          className="h-[460px] w-full object-cover md:h-[560px]"
+        />
+        <div className="absolute inset-0 bg-creme/60" />
         <div className="absolute inset-0 flex items-center">
           <div className="container-x text-center">
             <p className="eyebrow mb-4 text-bordeaux">Djibi Village · Abidjan</p>
