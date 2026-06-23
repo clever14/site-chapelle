@@ -121,7 +121,13 @@ export default async function AccueilPage() {
         <p className="eyebrow mb-2">Localisation</p>
         <h2 className="mb-6 font-display text-[30px] font-semibold text-marial">Nous trouver</h2>
         <div className="card overflow-hidden">
-          <Placeholder label="Carte Google Maps · Djibi Village" rounded="rounded-none" className="h-[340px] w-full" />
+          <iframe
+            title="Localisation de la Chapelle Sainte Jeanne d'Arc"
+            src="https://www.google.com/maps?q=5.478547,-3.949795&z=16&output=embed"
+            className="h-[340px] w-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </section>
     </>

@@ -1,5 +1,4 @@
 import PageBanner from "@/components/page-banner";
-import Placeholder from "@/components/placeholder";
 import ContactForm from "@/components/contact-form";
 import { CONTACT } from "@/lib/seed";
 
@@ -30,7 +29,13 @@ export default function ContactPage() {
           </div>
         </div>
         <div className="card mt-10 overflow-hidden">
-          <Placeholder label="Carte Google Maps · Djibi Village" rounded="rounded-none" className="h-[340px] w-full" />
+          <iframe
+            title="Localisation de la Chapelle Sainte Jeanne d'Arc"
+            src="https://www.google.com/maps?q=5.478547,-3.949795&z=16&output=embed"
+            className="h-[340px] w-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </section>
     </>

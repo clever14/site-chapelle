@@ -1,28 +1,54 @@
-import PageBanner from "@/components/page-banner";
+import AncresChapelle from "@/components/ancres-chapelle";
 import Placeholder from "@/components/placeholder";
 import { CLERGE, MOUVEMENTS, PILIERS_MISSION } from "@/lib/seed";
 
 export default function LaChapellePage() {
   return (
     <>
-      <PageBanner eyebrow="Notre identité" titre="La Chapelle" sous="Histoire, mission et communauté" />
-
-      <section id="histoire" className="container-x py-16">
-        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
-          <div>
-            <h2 className="mb-4 font-display text-[30px] font-semibold text-marial">Histoire</h2>
-            <p className="text-[16px] leading-relaxed text-attenue">
-              Fondée pour servir les fidèles de Djibi Village, la Chapelle Sainte Jeanne d'Arc
-              est devenue un lieu de prière, de rencontre et de solidarité au fil des années.
-            </p>
-          </div>
-          <Placeholder label="Photo · histoire de la chapelle" className="h-72 w-full" />
+      {/* Bandeau titre rayé + fil d'Ariane */}
+      <section className="placeholder-rayed border-b border-bord-2">
+        <div className="container-x py-16 text-center">
+          <h1 className="font-display text-[44px] font-semibold text-marial md:text-[52px]">La Chapelle</h1>
+          <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.16em] text-mono">
+            Accueil <span className="text-or">›</span> La Chapelle
+          </p>
         </div>
       </section>
 
-      <section id="mission" className="bg-panneau-2/40 py-16">
+      {/* Sous-onglets ancres */}
+      <AncresChapelle />
+
+      {/* HISTOIRE */}
+      <section id="histoire" className="container-x scroll-mt-32 py-16">
+        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2">
+          <img
+            src="/histoire-chapelle.jpeg"
+            alt="Parvis de la Chapelle Sainte Jeanne d'Arc, statue de la Vierge Marie"
+            className="h-80 w-full rounded-card border border-bord-2 object-cover"
+          />
+          <div>
+            <p className="eyebrow mb-3">Notre histoire</p>
+            <h2 className="mb-5 font-display text-[32px] font-semibold text-marial">
+              Une présence née de la foi du quartier
+            </h2>
+            <p className="mb-4 text-[16px] leading-relaxed text-attenue">
+              Fondée par les familles catholiques de Djibi Village, la Chapelle Sainte Jeanne d'Arc
+              est devenue au fil des années un lieu de rassemblement, de prière et de service.
+              D'une simple salle de prière, elle s'est agrandie grâce à la générosité des fidèles.
+            </p>
+            <p className="text-[16px] leading-relaxed text-attenue">
+              Placée sous le patronage de Sainte Jeanne d'Arc, elle puise dans son exemple le
+              courage de la foi et l'amour de la communauté.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* MISSION */}
+      <section id="mission" className="scroll-mt-32 bg-panneau-2/40 py-16">
         <div className="container-x">
-          <h2 className="mb-8 font-display text-[30px] font-semibold text-marial">Notre mission</h2>
+          <p className="eyebrow mb-2">Ce qui nous anime</p>
+          <h2 className="mb-8 font-display text-[32px] font-semibold text-marial">Notre mission</h2>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {PILIERS_MISSION.map((p) => (
               <div key={p.titre} className="card p-6">
@@ -34,8 +60,10 @@ export default function LaChapellePage() {
         </div>
       </section>
 
-      <section id="clerge" className="container-x py-16">
-        <h2 className="mb-8 font-display text-[30px] font-semibold text-marial">Le clergé</h2>
+      {/* CLERGÉ */}
+      <section id="clerge" className="container-x scroll-mt-32 py-16">
+        <p className="eyebrow mb-2">À votre service</p>
+        <h2 className="mb-8 font-display text-[32px] font-semibold text-marial">Le clergé</h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
           {CLERGE.map((m) => (
             <div key={m.id} className="card flex flex-col items-center p-6 text-center">
@@ -47,16 +75,21 @@ export default function LaChapellePage() {
         </div>
       </section>
 
-      <section id="mouvements" className="container-x pb-16">
-        <h2 className="mb-6 font-display text-[30px] font-semibold text-marial">Mouvements & groupes</h2>
-        <div className="flex flex-wrap gap-3">
-          {MOUVEMENTS.map((m) => (
-            <span key={m} className="pill border border-bord-3 bg-carte text-encre">{m}</span>
-          ))}
+      {/* MOUVEMENTS */}
+      <section id="mouvements" className="scroll-mt-32 bg-panneau-2/40 py-16">
+        <div className="container-x">
+          <p className="eyebrow mb-2">Vivre sa foi ensemble</p>
+          <h2 className="mb-6 font-display text-[32px] font-semibold text-marial">Mouvements & groupes</h2>
+          <div className="flex flex-wrap gap-3">
+            {MOUVEMENTS.map((m) => (
+              <span key={m} className="pill border border-bord-3 bg-carte text-encre">{m}</span>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="sainte-jeanne" className="bg-marial py-20 text-center text-white">
+      {/* SAINTE JEANNE D'ARC */}
+      <section id="sainte-jeanne" className="scroll-mt-32 bg-marial py-20 text-center text-white">
         <div className="container-x">
           <p className="eyebrow mb-4 text-or/90">Notre sainte patronne</p>
           <h2 className="mb-6 font-display text-[34px] font-semibold">Sainte Jeanne d'Arc</h2>

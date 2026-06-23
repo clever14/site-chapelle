@@ -16,11 +16,8 @@ const NAV = [
 
 function Medaillon() {
   return (
-    <span
-      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-or bg-marial-dark font-display text-[15px] font-bold text-or"
-      aria-hidden
-    >
-      JA
+    <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-or bg-marial-dark">
+      <img src="/logo-jeanne.png" alt="Sainte Jeanne d'Arc" className="h-full w-full object-cover" />
     </span>
   );
 }

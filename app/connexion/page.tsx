@@ -43,8 +43,8 @@ export default function ConnexionPage() {
       style={{ background: "radial-gradient(circle at 50% 30%, #22386a 0%, #1a2a50 70%)" }}
     >
       <div className="card w-full max-w-md p-8 text-center">
-        <span className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full border-2 border-or bg-marial-dark font-display text-[18px] font-bold text-or">
-          JA
+        <span className="mx-auto mb-5 flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2 border-or bg-marial-dark">
+          <img src="/logo-jeanne.png" alt="Sainte Jeanne d'Arc" className="h-full w-full object-cover" />
         </span>
         <h1 className="mb-1 font-display text-[26px] font-semibold text-marial">Espace administration</h1>
         <p className="mb-6 text-[14px] text-attenue2">Réservé à l'équipe de la chapelle</p>

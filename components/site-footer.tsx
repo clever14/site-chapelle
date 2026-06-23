@@ -9,8 +9,8 @@ export default function SiteFooter() {
         {/* Identité */}
         <div>
           <div className="mb-3 flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-or font-display font-bold text-or">
-              JA
+            <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border-2 border-or">
+              <img src="/logo-jeanne.png" alt="Sainte Jeanne d'Arc" className="h-full w-full object-cover" />
             </span>
             <span className="font-display text-[17px] font-semibold text-white">
               Sainte Jeanne d'Arc

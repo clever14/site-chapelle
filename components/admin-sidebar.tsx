@@ -23,8 +23,8 @@ export default function AdminSidebar({ moderation = 0 }: { moderation?: number }
   return (
     <aside className="flex w-[230px] shrink-0 flex-col bg-marial-dark text-white">
       <div className="flex items-center gap-3 px-6 py-5">
-        <span className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-or font-display text-[14px] font-bold text-or">
-          JA
+        <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full border-2 border-or">
+          <img src="/logo-jeanne.png" alt="Sainte Jeanne d'Arc" className="h-full w-full object-cover" />
         </span>
         <span className="font-display text-[16px] font-semibold">Administration</span>
       </div>
