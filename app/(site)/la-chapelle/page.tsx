@@ -89,13 +89,27 @@ export default function LaChapellePage() {
       </section>
 
       {/* SAINTE JEANNE D'ARC */}
-      <section id="sainte-jeanne" className="scroll-mt-32 bg-marial py-20 text-center text-white">
+      <section id="sainte-jeanne" className="scroll-mt-32 py-16">
         <div className="container-x">
-          <p className="eyebrow mb-4 text-or/90">Notre sainte patronne</p>
-          <h2 className="mb-6 font-display text-[34px] font-semibold">Sainte Jeanne d'Arc</h2>
-          <p className="mx-auto max-w-2xl font-display text-[24px] italic text-or">
-            « Les hommes d'armes batailleront et Dieu donnera la victoire. »
-          </p>
+          <div className="grid grid-cols-1 overflow-hidden rounded-card bg-marial text-white shadow-cardLg md:grid-cols-2">
+            <img
+              src="/sainte-jeanne.jpeg"
+              alt="Sainte Jeanne d'Arc en armure"
+              className="h-72 w-full object-cover object-top md:h-full"
+            />
+            <div className="p-8 md:p-10">
+              <p className="eyebrow mb-3 text-or/90">Notre sainte patronne</p>
+              <h2 className="mb-5 font-display text-[34px] font-semibold">Sainte Jeanne d'Arc</h2>
+              <p className="mb-6 text-[15px] leading-relaxed text-white/85">
+                Jeune fille de foi et de courage, Jeanne d'Arc demeure pour notre communauté
+                un modèle de confiance en Dieu et de don de soi. Canonisée en 1920, elle est
+                fêtée chaque année le 30 mai.
+              </p>
+              <p className="font-display text-[22px] italic text-or">
+                « Les hommes d'armes batailleront, et Dieu donnera la victoire. »
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </>
