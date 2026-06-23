@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --marial: #22386a;
+  --marial-dark: #1a2a50;
+  --or: #c89b3c;
+  --or-hover: #b98a2e;
+  --bordeaux: #7c2a2f;
+  --creme: #f6f3ec;
+  --carte: #fffdf8;
+  --encre: #2a2e38;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--creme);
+  color: var(--encre);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  /* Libellés / dates monospace UPPERCASE */
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-mono;
+  }
+
+  /* Boutons */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-field px-5 py-3
+           font-body font-semibold text-[15px] transition-colors min-h-[44px]
+           cursor-pointer select-none;
+  }
+  .btn-or {
+    @apply btn bg-or text-marial-dark hover:bg-or-hover;
+  }
+  .btn-marial {
+    @apply btn bg-marial text-white hover:bg-marial-hover;
+  }
+  .btn-outline {
+    @apply btn border border-bord-3 bg-transparent text-encre hover:border-or hover:text-marial;
+  }
+
+  /* Conteneur de page */
+  .container-x {
+    @apply mx-auto w-full max-w-container px-6;
+  }
+
+  /* Carte de base */
+  .card {
+    @apply rounded-card bg-carte border border-bord-1 shadow-card;
+  }
+
+  /* Pill / chip */
+  .pill {
+    @apply inline-flex items-center rounded-pill px-3.5 py-1.5 text-[13px]
+           font-semibold transition-colors;
+  }
+}
+
+@layer utilities {
+  /* Placeholder image rayé (reproduit le composant Placeholder.dc.html) */
+  .placeholder-rayed {
+    background-image: repeating-linear-gradient(
+      135deg,
+      #e9e5da,
+      #e9e5da 12px,
+      #e1dccd 12px,
+      #e1dccd 24px
+    );
+  }
+}
+
+/* Respecte les préférences de mouvement réduit */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
