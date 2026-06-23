@@ -5,7 +5,7 @@ import { SUPABASE_CONFIGURED } from "./supabase/config";
 import {
   SEED_ACTUALITES, SEED_EVENEMENTS, SEED_HORAIRES, SEED_EXCEPTIONS,
   SEED_ALBUMS, SEED_TEMOIGNAGES, SEED_DONS, SEED_PROFILS,
-  SEED_CLERGE, SEED_CONSEIL, SEED_MOUVEMENTS,
+  SEED_CLERGE, SEED_CONSEIL, SEED_MOUVEMENTS, SEED_MESSAGES,
 } from "./seed";
 import type {
   Actualite, Evenement, Horaire, HoraireException,
@@ -123,5 +123,14 @@ export function getMouvements() {
     const { data, error } = await s.from("mouvements").select("*").order("ordre", { ascending: true });
     if (error) throw error;
     return data as typeof SEED_MOUVEMENTS;
+  });
+}
+
+export function getMessages() {
+  return safe(SEED_MESSAGES, async () => {
+    const s = createClient();
+    const { data, error } = await s.from("messages_contact").select("*").order("cree_le", { ascending: false });
+    if (error) throw error;
+    return data as typeof SEED_MESSAGES;
   });
 }

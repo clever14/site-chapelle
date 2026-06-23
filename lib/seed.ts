@@ -4,7 +4,7 @@
 import type {
   Actualite, Evenement, Horaire, HoraireException,
   Album, Temoignage, Don, Profil,
-  Clerge, ConseilMembre, Mouvement,
+  Clerge, ConseilMembre, Mouvement, MessageContact,
 } from "./types";
 
 const now = new Date().toISOString();
@@ -95,3 +95,7 @@ export const CONTACT = {
   whatsapp: "+225 07 00 00 00 00",
   email: "contact@chapelle-jeannedarc.ci",
 };
+
+export const SEED_MESSAGES: MessageContact[] = [
+  { id: "msg1", nom: "Konan Aristide", email: "aristide@example.com", telephone: "+225 07 11 22 33 44", objet: "Demande de sacrement", message: "Bonjour, je souhaiterais des informations pour le baptême de mon fils.", traite: false, cree_le: now },
+];

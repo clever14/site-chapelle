@@ -64,6 +64,17 @@ export default async function AdminDashboard() {
           </div>
         </div>
       </div>
+
+      {/* Bandeau UX — comme la maquette */}
+      <div className="mt-6 rounded-card bg-marial p-6 text-white">
+        <p className="eyebrow mb-4 text-or/90">UX — Administration</p>
+        <div className="grid grid-cols-1 gap-x-10 gap-y-2 text-[14px] text-white/85 md:grid-cols-2">
+          <p>› <strong className="text-white">Simplicité avant tout</strong> — pensé pour des responsables non-techniciens.</p>
+          <p>› <strong className="text-white">Statuts clairs</strong> — Publié / Brouillon / À modérer.</p>
+          <p>› <strong className="text-white">Rôles</strong> — Administrateur, Éditeur, Modérateur.</p>
+          <p>› <strong className="text-white">Édition & photos</strong> — modifiez tout, ajoutez vos images.</p>
+        </div>
+      </div>
     </div>
   );
 }

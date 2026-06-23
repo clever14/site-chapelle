@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ImageUpload from "@/components/image-upload";
 import { getActualites } from "@/lib/queries";
 import {
@@ -55,6 +56,7 @@ export default async function AdminActualites() {
                 <span className={`pill text-[11px] ${a.statut === "publie" ? "bg-[#e3f0e6] text-[#1f7a44]" : "bg-panneau-1 text-[#8a6d22]"}`}>
                   {a.statut === "publie" ? "Publié" : "Brouillon"}
                 </span>
+                <Link href={`/admin/actualites/${a.id}`} className="rounded-field border border-bord-3 px-2.5 py-1.5 text-[12px] hover:border-or">✎</Link>
                 <form action={basculerStatutActualite}>
                   <input type="hidden" name="id" value={a.id} />
                   <input type="hidden" name="statut" value={a.statut === "publie" ? "brouillon" : "publie"} />

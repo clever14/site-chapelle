@@ -14,6 +14,7 @@ const LIENS = [
   { href: "/admin/conseil", label: "Conseil paroissial" },
   { href: "/admin/mouvements", label: "Mouvements" },
   { href: "/admin/livre-d-or", label: "Livre d'or", badgeKey: "moderation" },
+  { href: "/admin/messages", label: "Messages" },
   { href: "/admin/dons", label: "Dons" },
   { href: "/admin/utilisateurs", label: "Utilisateurs" },
 ];

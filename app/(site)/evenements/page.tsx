@@ -13,6 +13,9 @@ export default async function EvenementsPage() {
             const p = pastilleDate(e.date_debut);
             return (
               <article key={e.id} className="card flex flex-col gap-5 p-5 sm:flex-row sm:items-center">
+                {e.image_url && (
+                  <img src={e.image_url} alt={e.titre} className="h-32 w-full shrink-0 rounded-field object-cover sm:h-24 sm:w-32" />
+                )}
                 <div className="flex h-20 w-20 shrink-0 flex-col items-center justify-center rounded-field bg-bordeaux text-white">
                   <span className="font-display text-[26px] font-bold leading-none">{p.jour}</span>
                   <span className="font-mono text-[10px] tracking-[0.14em]">{p.mois}</span>

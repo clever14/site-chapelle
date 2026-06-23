@@ -6,7 +6,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
   return (
     <>
       <SiteHeader />
-      <main className="min-h-[60vh] pb-24 lg:pb-0">{children}</main>
+      <main className="min-h-[60vh] pb-24 xl:pb-0">{children}</main>
       <SiteFooter />
       <MobileActionBar />
     </>

@@ -78,6 +78,7 @@ export async function creerEvenement(fd: FormData) {
     date_debut: str(fd, "date_debut") || new Date().toISOString(),
     heure_texte: str(fd, "heure_texte") || null,
     categorie: str(fd, "categorie") || null,
+    image_url: str(fd, "image_url") || null,
     inscription: bool(fd, "inscription"),
   });
   revalidatePath("/admin/evenements");
@@ -283,4 +284,100 @@ export async function supprimerMouvement(fd: FormData) {
   await s.from("mouvements").delete().eq("id", str(fd, "id"));
   revalidatePath("/admin/mouvements");
   revalidatePath("/la-chapelle");
+}
+
+/* ============================================================
+   MODIFICATIONS (édition) + MESSAGES
+   ============================================================ */
+
+export async function modifierActualite(fd: FormData) {
+  guard();
+  const s = createClient();
+  const statut = str(fd, "statut") || "brouillon";
+  await s.from("actualites").update({
+    titre: str(fd, "titre"),
+    extrait: str(fd, "extrait") || null,
+    contenu: str(fd, "contenu") || null,
+    categorie: str(fd, "categorie") || null,
+    a_la_une: bool(fd, "a_la_une"),
+    statut,
+    ...(str(fd, "image_url") ? { image_url: str(fd, "image_url") } : {}),
+    publie_le: statut === "publie" ? new Date().toISOString().slice(0, 10) : null,
+  }).eq("id", str(fd, "id"));
+  revalidatePath("/admin/actualites");
+  revalidatePath("/actualites");
+}
+
+export async function modifierEvenement(fd: FormData) {
+  guard();
+  const s = createClient();
+  await s.from("evenements").update({
+    titre: str(fd, "titre"),
+    description: str(fd, "description") || null,
+    lieu: str(fd, "lieu") || null,
+    ...(str(fd, "date_debut") ? { date_debut: str(fd, "date_debut") } : {}),
+    heure_texte: str(fd, "heure_texte") || null,
+    categorie: str(fd, "categorie") || null,
+    ...(str(fd, "image_url") ? { image_url: str(fd, "image_url") } : {}),
+    inscription: bool(fd, "inscription"),
+  }).eq("id", str(fd, "id"));
+  revalidatePath("/admin/evenements");
+  revalidatePath("/evenements");
+}
+
+export async function modifierClerge(fd: FormData) {
+  guard();
+  const s = createClient();
+  await s.from("clerge").update({
+    nom: str(fd, "nom"),
+    fonction: str(fd, "fonction") || null,
+    ...(str(fd, "photo_url") ? { photo_url: str(fd, "photo_url") } : {}),
+    ordre: Number(str(fd, "ordre") || "0"),
+  }).eq("id", str(fd, "id"));
+  revalidatePath("/admin/clerge");
+  revalidatePath("/la-chapelle");
+}
+
+export async function modifierConseil(fd: FormData) {
+  guard();
+  const s = createClient();
+  await s.from("conseil_paroissial").update({
+    nom: str(fd, "nom"),
+    fonction: str(fd, "fonction") || null,
+    ...(str(fd, "photo_url") ? { photo_url: str(fd, "photo_url") } : {}),
+    ordre: Number(str(fd, "ordre") || "0"),
+  }).eq("id", str(fd, "id"));
+  revalidatePath("/admin/conseil");
+  revalidatePath("/la-chapelle");
+}
+
+export async function modifierMouvement(fd: FormData) {
+  guard();
+  const s = createClient();
+  await s.from("mouvements").update({
+    nom: str(fd, "nom"),
+    description: str(fd, "description") || null,
+    president_nom: str(fd, "president_nom") || null,
+    president_contact: str(fd, "president_contact") || null,
+    secretaire_nom: str(fd, "secretaire_nom") || null,
+    secretaire_contact: str(fd, "secretaire_contact") || null,
+    ordre: Number(str(fd, "ordre") || "0"),
+  }).eq("id", str(fd, "id"));
+  revalidatePath("/admin/mouvements");
+  revalidatePath("/la-chapelle");
+}
+
+/* ---------------- MESSAGES DE CONTACT ---------------- */
+export async function marquerMessageTraite(fd: FormData) {
+  guard();
+  const s = createClient();
+  await s.from("messages_contact").update({ traite: true }).eq("id", str(fd, "id"));
+  revalidatePath("/admin/messages");
+}
+
+export async function supprimerMessage(fd: FormData) {
+  guard();
+  const s = createClient();
+  await s.from("messages_contact").delete().eq("id", str(fd, "id"));
+  revalidatePath("/admin/messages");
 }

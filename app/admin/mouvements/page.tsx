@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getMouvements } from "@/lib/queries";
 import { creerMouvement, supprimerMouvement } from "@/lib/actions";
 
@@ -37,6 +38,7 @@ export default async function AdminMouvements() {
             <div key={m.id} className="card p-5">
               <div className="mb-2 flex items-start justify-between gap-3">
                 <h3 className="font-display text-[19px] font-semibold text-encre">{m.nom}</h3>
+                <Link href={`/admin/mouvements/${m.id}`} className="shrink-0 rounded-field border border-bord-3 px-2.5 py-1.5 text-[12px] hover:border-or">✎</Link>
                 <form action={supprimerMouvement}>
                   <input type="hidden" name="id" value={m.id} />
                   <button className="shrink-0 rounded-field border border-bord-3 px-2.5 py-1.5 text-[12px] text-bordeaux hover:border-bordeaux">🗑</button>

@@ -60,7 +60,9 @@ export default async function AccueilPage() {
             return (
               <article key={e.id} className="card overflow-hidden">
                 <div className="relative">
-                  <Placeholder label={e.categorie ?? "Événement"} rounded="rounded-none" className="h-44 w-full" />
+                  {e.image_url
+                    ? <img src={e.image_url} alt={e.titre} className="h-44 w-full object-cover" />
+                    : <Placeholder label={e.categorie ?? "Événement"} rounded="rounded-none" className="h-44 w-full" />}
                   <div className="absolute left-4 top-4 flex flex-col items-center rounded-field bg-bordeaux px-3 py-1.5 text-white">
                     <span className="font-display text-[20px] font-bold leading-none">{p.jour}</span>
                     <span className="font-mono text-[10px] tracking-[0.15em]">{p.mois}</span>

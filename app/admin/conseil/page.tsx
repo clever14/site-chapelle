@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ImageUpload from "@/components/image-upload";
 import { getConseil } from "@/lib/queries";
 import { creerConseil, supprimerConseil } from "@/lib/actions";
@@ -32,6 +33,7 @@ export default async function AdminConseil() {
                   <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-mono">{m.fonction ?? "—"}</p>
                 </div>
               </div>
+              <Link href={`/admin/conseil/${m.id}`} className="shrink-0 rounded-field border border-bord-3 px-2.5 py-1.5 text-[12px] hover:border-or">✎</Link>
               <form action={supprimerConseil}>
                 <input type="hidden" name="id" value={m.id} />
                 <button className="shrink-0 rounded-field border border-bord-3 px-2.5 py-1.5 text-[12px] text-bordeaux hover:border-bordeaux">🗑</button>

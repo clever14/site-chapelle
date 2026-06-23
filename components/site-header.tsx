@@ -11,6 +11,7 @@ const NAV = [
   { href: "/actualites", label: "Actualités" },
   { href: "/evenements", label: "Événements" },
   { href: "/galerie", label: "Galerie" },
+  { href: "/livre-d-or", label: "Livre d'or" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -41,7 +42,7 @@ export default function SiteHeader() {
         </Link>
 
         {/* Nav desktop */}
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-5 xl:flex">
           {NAV.map((item) => (
             <Link
               key={item.href}
@@ -66,7 +67,7 @@ export default function SiteHeader() {
           {/* Hamburger mobile */}
           <button
             type="button"
-            className="flex h-11 w-11 items-center justify-center rounded-field lg:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-field xl:hidden"
             aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
@@ -94,7 +95,7 @@ export default function SiteHeader() {
 
       {/* Panneau mobile */}
       {open && (
-        <div className="border-t border-white/10 bg-marial-dark lg:hidden">
+        <div className="border-t border-white/10 bg-marial-dark xl:hidden">
           <nav className="container-x flex flex-col py-2">
             {NAV.map((item) => (
               <Link
