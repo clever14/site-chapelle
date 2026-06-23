@@ -6,6 +6,7 @@ const ANCRES = [
   { id: "histoire", label: "Histoire" },
   { id: "mission", label: "Mission" },
   { id: "clerge", label: "Clergé" },
+  { id: "conseil", label: "Conseil" },
   { id: "mouvements", label: "Mouvements" },
   { id: "sainte-jeanne", label: "Sainte Jeanne d'Arc" },
 ];

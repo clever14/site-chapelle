@@ -1,8 +1,15 @@
 import AncresChapelle from "@/components/ancres-chapelle";
 import Placeholder from "@/components/placeholder";
-import { CLERGE, MOUVEMENTS, PILIERS_MISSION } from "@/lib/seed";
+import { PILIERS_MISSION } from "@/lib/seed";
+import { getClerge, getConseil, getMouvements } from "@/lib/queries";
 
-export default function LaChapellePage() {
+export default async function LaChapellePage() {
+  const [clerge, conseil, mouvements] = await Promise.all([
+    getClerge(),
+    getConseil(),
+    getMouvements(),
+  ]);
+
   return (
     <>
       {/* Bandeau titre rayé + fil d'Ariane */}
@@ -65,31 +72,74 @@ export default function LaChapellePage() {
         <p className="eyebrow mb-2">À votre service</p>
         <h2 className="mb-8 font-display text-[32px] font-semibold text-marial">Le clergé</h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {CLERGE.map((m) => (
+          {clerge.map((m) => (
             <div key={m.id} className="card flex flex-col items-center p-6 text-center">
-              <Placeholder rounded="rounded-full" className="mb-4 h-24 w-24" />
+              {m.photo_url
+                ? <img src={m.photo_url} alt={m.nom} className="mb-4 h-24 w-24 rounded-full object-cover" />
+                : <Placeholder rounded="rounded-full" className="mb-4 h-24 w-24" />}
               <h3 className="font-display text-[19px] font-semibold text-encre">{m.nom}</h3>
               <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-mono">{m.fonction}</p>
             </div>
           ))}
+          {clerge.length === 0 && <p className="text-[14px] text-attenue2">À venir.</p>}
         </div>
       </section>
 
-      {/* MOUVEMENTS */}
-      <section id="mouvements" className="scroll-mt-32 bg-panneau-2/40 py-16">
+      {/* CONSEIL PAROISSIAL */}
+      <section id="conseil" className="scroll-mt-32 bg-panneau-2/40 py-16">
         <div className="container-x">
-          <p className="eyebrow mb-2">Vivre sa foi ensemble</p>
-          <h2 className="mb-6 font-display text-[32px] font-semibold text-marial">Mouvements & groupes</h2>
-          <div className="flex flex-wrap gap-3">
-            {MOUVEMENTS.map((m) => (
-              <span key={m} className="pill border border-bord-3 bg-carte text-encre">{m}</span>
+          <p className="eyebrow mb-2">Au service de la communauté</p>
+          <h2 className="mb-8 font-display text-[32px] font-semibold text-marial">Conseil paroissial</h2>
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+            {conseil.map((m) => (
+              <div key={m.id} className="card flex flex-col items-center p-5 text-center">
+                {m.photo_url
+                  ? <img src={m.photo_url} alt={m.nom} className="mb-3 h-20 w-20 rounded-full object-cover" />
+                  : <Placeholder rounded="rounded-full" className="mb-3 h-20 w-20" />}
+                <h3 className="font-display text-[17px] font-semibold text-encre">{m.nom}</h3>
+                <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-mono">{m.fonction}</p>
+              </div>
             ))}
+            {conseil.length === 0 && <p className="text-[14px] text-attenue2">À venir.</p>}
           </div>
         </div>
       </section>
 
+      {/* MOUVEMENTS */}
+      <section id="mouvements" className="container-x scroll-mt-32 py-16">
+        <p className="eyebrow mb-2">Vivre sa foi ensemble</p>
+        <h2 className="mb-8 font-display text-[32px] font-semibold text-marial">Mouvements & groupes</h2>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {mouvements.map((m) => (
+            <div key={m.id} className="card p-6">
+              <h3 className="mb-1 font-display text-[20px] font-semibold text-bordeaux">{m.nom}</h3>
+              {m.description && <p className="mb-4 text-[14px] text-attenue">{m.description}</p>}
+              {(m.president_nom || m.secretaire_nom) && (
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  {m.president_nom && (
+                    <div className="rounded-field bg-panneau-1/50 px-3 py-2">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-mono">Président</p>
+                      <p className="text-[14px] font-semibold text-encre">{m.president_nom}</p>
+                      {m.president_contact && <p className="text-[13px] text-attenue">{m.president_contact}</p>}
+                    </div>
+                  )}
+                  {m.secretaire_nom && (
+                    <div className="rounded-field bg-panneau-1/50 px-3 py-2">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-mono">Secrétaire</p>
+                      <p className="text-[14px] font-semibold text-encre">{m.secretaire_nom}</p>
+                      {m.secretaire_contact && <p className="text-[13px] text-attenue">{m.secretaire_contact}</p>}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
+          {mouvements.length === 0 && <p className="text-[14px] text-attenue2">À venir.</p>}
+        </div>
+      </section>
+
       {/* SAINTE JEANNE D'ARC */}
-      <section id="sainte-jeanne" className="scroll-mt-32 py-16">
+      <section id="sainte-jeanne" className="scroll-mt-32 bg-panneau-2/40 py-16">
         <div className="container-x">
           <div className="grid grid-cols-1 overflow-hidden rounded-card bg-marial text-white shadow-cardLg md:grid-cols-2">
             <img

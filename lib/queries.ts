@@ -5,6 +5,7 @@ import { SUPABASE_CONFIGURED } from "./supabase/config";
 import {
   SEED_ACTUALITES, SEED_EVENEMENTS, SEED_HORAIRES, SEED_EXCEPTIONS,
   SEED_ALBUMS, SEED_TEMOIGNAGES, SEED_DONS, SEED_PROFILS,
+  SEED_CLERGE, SEED_CONSEIL, SEED_MOUVEMENTS,
 } from "./seed";
 import type {
   Actualite, Evenement, Horaire, HoraireException,
@@ -95,5 +96,32 @@ export function getProfils() {
     const { data, error } = await s.from("profils").select("*").order("cree_le", { ascending: true });
     if (error) throw error;
     return data as Profil[];
+  });
+}
+
+export function getClerge() {
+  return safe(SEED_CLERGE, async () => {
+    const s = createClient();
+    const { data, error } = await s.from("clerge").select("*").order("ordre", { ascending: true });
+    if (error) throw error;
+    return data as typeof SEED_CLERGE;
+  });
+}
+
+export function getConseil() {
+  return safe(SEED_CONSEIL, async () => {
+    const s = createClient();
+    const { data, error } = await s.from("conseil_paroissial").select("*").order("ordre", { ascending: true });
+    if (error) throw error;
+    return data as typeof SEED_CONSEIL;
+  });
+}
+
+export function getMouvements() {
+  return safe(SEED_MOUVEMENTS, async () => {
+    const s = createClient();
+    const { data, error } = await s.from("mouvements").select("*").order("ordre", { ascending: true });
+    if (error) throw error;
+    return data as typeof SEED_MOUVEMENTS;
   });
 }

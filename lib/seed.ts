@@ -4,6 +4,7 @@
 import type {
   Actualite, Evenement, Horaire, HoraireException,
   Album, Temoignage, Don, Profil,
+  Clerge, ConseilMembre, Mouvement,
 } from "./types";
 
 const now = new Date().toISOString();
@@ -63,16 +64,22 @@ export const SEED_PROFILS: Profil[] = [
   { id: "p1", nom: "Administrateur", role: "admin", actif: true, cree_le: now },
 ];
 
-// Contenu fixe (mission, clergé, mouvements) — pas de table dédiée, reste en dur
-export const CLERGE = [
-  { id: "c1", nom: "Père Jean-Baptiste Koffi", fonction: "Curé de la chapelle" },
-  { id: "c2", nom: "Père Emmanuel Aka", fonction: "Vicaire" },
-  { id: "c3", nom: "Diacre Paul Yao", fonction: "Diacre permanent" },
+export const SEED_CLERGE: Clerge[] = [
+  { id: "c1", nom: "Père Jean-Baptiste Koffi", fonction: "Curé de la chapelle", photo_url: null, ordre: 1, cree_le: now },
+  { id: "c2", nom: "Père Emmanuel Aka", fonction: "Vicaire", photo_url: null, ordre: 2, cree_le: now },
+  { id: "c3", nom: "Diacre Paul Yao", fonction: "Diacre permanent", photo_url: null, ordre: 3, cree_le: now },
 ];
 
-export const MOUVEMENTS = [
-  "Légion de Marie", "Chorale Sainte Cécile", "Servants de messe",
-  "Jeunesse Étudiante Catholique", "Communauté du Renouveau", "Conférence Saint-Vincent-de-Paul",
+export const SEED_CONSEIL: ConseilMembre[] = [
+  { id: "cp1", nom: "M. Koffi Bernard", fonction: "Président", photo_url: null, ordre: 1, cree_le: now },
+  { id: "cp2", nom: "Mme Aya Suzanne", fonction: "Secrétaire", photo_url: null, ordre: 2, cree_le: now },
+  { id: "cp3", nom: "M. Yao Vincent", fonction: "Trésorier", photo_url: null, ordre: 3, cree_le: now },
+];
+
+export const SEED_MOUVEMENTS: Mouvement[] = [
+  { id: "m1", nom: "Légion de Marie", description: "Prière mariale et visites aux malades.", president_nom: "Mme Adjoua Marie", president_contact: "+225 07 00 00 00 01", secretaire_nom: "Mme Akissi Rose", secretaire_contact: "+225 07 00 00 00 02", ordre: 1, cree_le: now },
+  { id: "m2", nom: "Chorale Sainte Cécile", description: "Animation liturgique des messes.", president_nom: "M. Koffi Daniel", president_contact: "+225 07 00 00 00 03", secretaire_nom: null, secretaire_contact: null, ordre: 2, cree_le: now },
+  { id: "m3", nom: "Servants de messe", description: "Service de l'autel.", president_nom: null, president_contact: null, secretaire_nom: null, secretaire_contact: null, ordre: 3, cree_le: now },
 ];
 
 export const PILIERS_MISSION = [

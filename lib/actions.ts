@@ -215,3 +215,72 @@ export async function enregistrerDon(fd: FormData) {
     statut: "en_attente",
   });
 }
+
+/* ---------------- CLERGÉ ---------------- */
+export async function creerClerge(fd: FormData) {
+  guard();
+  const s = createClient();
+  await s.from("clerge").insert({
+    nom: str(fd, "nom"),
+    fonction: str(fd, "fonction") || null,
+    photo_url: str(fd, "photo_url") || null,
+    ordre: Number(str(fd, "ordre") || "0"),
+  });
+  revalidatePath("/admin/clerge");
+  revalidatePath("/la-chapelle");
+}
+
+export async function supprimerClerge(fd: FormData) {
+  guard();
+  const s = createClient();
+  await s.from("clerge").delete().eq("id", str(fd, "id"));
+  revalidatePath("/admin/clerge");
+  revalidatePath("/la-chapelle");
+}
+
+/* ---------------- CONSEIL PAROISSIAL ---------------- */
+export async function creerConseil(fd: FormData) {
+  guard();
+  const s = createClient();
+  await s.from("conseil_paroissial").insert({
+    nom: str(fd, "nom"),
+    fonction: str(fd, "fonction") || null,
+    photo_url: str(fd, "photo_url") || null,
+    ordre: Number(str(fd, "ordre") || "0"),
+  });
+  revalidatePath("/admin/conseil");
+  revalidatePath("/la-chapelle");
+}
+
+export async function supprimerConseil(fd: FormData) {
+  guard();
+  const s = createClient();
+  await s.from("conseil_paroissial").delete().eq("id", str(fd, "id"));
+  revalidatePath("/admin/conseil");
+  revalidatePath("/la-chapelle");
+}
+
+/* ---------------- MOUVEMENTS ---------------- */
+export async function creerMouvement(fd: FormData) {
+  guard();
+  const s = createClient();
+  await s.from("mouvements").insert({
+    nom: str(fd, "nom"),
+    description: str(fd, "description") || null,
+    president_nom: str(fd, "president_nom") || null,
+    president_contact: str(fd, "president_contact") || null,
+    secretaire_nom: str(fd, "secretaire_nom") || null,
+    secretaire_contact: str(fd, "secretaire_contact") || null,
+    ordre: Number(str(fd, "ordre") || "0"),
+  });
+  revalidatePath("/admin/mouvements");
+  revalidatePath("/la-chapelle");
+}
+
+export async function supprimerMouvement(fd: FormData) {
+  guard();
+  const s = createClient();
+  await s.from("mouvements").delete().eq("id", str(fd, "id"));
+  revalidatePath("/admin/mouvements");
+  revalidatePath("/la-chapelle");
+}

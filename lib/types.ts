@@ -101,3 +101,33 @@ export type Don = {
   reference: string | null;
   cree_le: string;
 };
+
+export type Clerge = {
+  id: string;
+  nom: string;
+  fonction: string | null;
+  photo_url: string | null;
+  ordre: number;
+  cree_le: string;
+};
+
+export type ConseilMembre = {
+  id: string;
+  nom: string;
+  fonction: string | null;
+  photo_url: string | null;
+  ordre: number;
+  cree_le: string;
+};
+
+export type Mouvement = {
+  id: string;
+  nom: string;
+  description: string | null;
+  president_nom: string | null;
+  president_contact: string | null;
+  secretaire_nom: string | null;
+  secretaire_contact: string | null;
+  ordre: number;
+  cree_le: string;
+};
